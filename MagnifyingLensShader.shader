@@ -1,12 +1,11 @@
 Shader "BasilAmer/MagnifyingLensShader" {
 
-	Properties {
-		_Magnification("Magnification", Range(1,10)) = 1
-		_Smoothness("Smoothness", Range(0,1)) = 1
-	}
+  Properties {
+	_Magnification("Magnification", Range(1,10)) = 1
+	_Smoothness("Smoothness", Range(0,1)) = 1
+  }
  
-    SubShader {
-
+  SubShader {
         Tags { "Queue" = "Transparent" }
  
         GrabPass { "_GrabTexture" }
