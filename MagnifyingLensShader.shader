@@ -13,21 +13,19 @@ Shader "BasilAmer/MagnifyingLensShader" {
 
         CGPROGRAM
         #pragma surface surf Standard vertex:vert
-        #pragma debug
  
-        sampler2D _MainTex;
         sampler2D _GrabTexture;
+        float4 _LensColor;
         half _Magnification;
         float _Smoothness;
-        float4 _LensColor;
  
         struct Input {
             float4 grabUV;
         };
  
         void vert (inout appdata_full v, out Input o) {
-            float4 center = ComputeGrabScreenPos(UnityObjectToClipPos(float4(0, 0, 0, 1
-            float4 diff = ComputeGrabScreenPos(UnityObjectToClipPos (v.vertex)) - 
+            float4 center = ComputeGrabScreenPos(UnityObjectToClipPos(float4(0, 0, 0, 1)));
+            float4 diff = ComputeGrabScreenPos(UnityObjectToClipPos (v.vertex)) - center;
             diff /= _Magnification;
             o.grabUV = center + diff;
         }
